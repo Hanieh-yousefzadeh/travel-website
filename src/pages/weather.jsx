@@ -21,19 +21,15 @@ function Weather() {
     const [loading, setLoading] = useState(false)
     const [like, setLike] = useState(false)
 
-    let latitude = null;
-    let longitude = null;
-
-    if (country) {
-        latitude = country.capitals[0].coordinates.lat;
-        longitude = country.capitals[0].coordinates.lng;
-    }
-
     useEffect(() => {
 
         if (!country) {
             return;
         }
+
+        const latitude = country.capitals[0].coordinates.lat;
+        const longitude = country.capitals[0].coordinates.lng;
+
         async function getWeather() {
             setLoading(true)
             setError("")
@@ -54,7 +50,7 @@ function Weather() {
                 setLoading(false)
             }
         }; getWeather()
-    }, [country, latitude, longitude])
+    }, [country])
 
     if (!country) {
         return <h1>Loading country...</h1>
@@ -83,7 +79,7 @@ function Weather() {
             <h3> Temperature: {weather.current.temperature_2m} °C</h3>
             <h3>wind : {weather.current.wind_speed_10m} km/h</h3>
             <h3>Humidity : {weather.current.relative_humidity_2m} %</h3>
-            <button onClick={handelLike}><Heart className={like ? "text-red-500": ""} fill={like ? "red" : "none"}/></button>
+            <button onClick={handelLike}><Heart className={like ? "text-red-500" : ""} fill={like ? "red" : "none"} /></button>
         </div>
     )
 
