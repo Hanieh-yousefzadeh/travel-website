@@ -11,11 +11,18 @@ import Header from "./components/header";
 const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
 // console.log(apikey);
 
-
 function App() {
 
-  const [countries, setCountries] = useState([])
-  const [favorites, setFavorites] = useState([])
+  const [countries, setCountries] = useState([]);
+
+  const [favorites, setFavorites] = useState(() => {
+    return JSON.parse(localStorage.getItem("favorites")) || []
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites))
+  }, [favorites]);
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -58,7 +65,7 @@ function App() {
     }
     getCountry()
 
-  }, [])
+  }, []);
 
   if (loading) {
     return (<h1>loading ...</h1>)
@@ -83,5 +90,7 @@ function App() {
     </>
   )
 }
+
+
 
 export default App;
