@@ -6,9 +6,11 @@ import { CountryContext } from "../context/countrycontext";
 function Weather() {
 
     const { id } = useParams();
-    const { countries } = useContext(CountryContext);
+    const { countries ,favorites, setFavorites } = useContext(CountryContext);
     // console.log(id)
     const country = countries.find((country) => country.uuid === id);
+    
+    const isFavorite = country ? favorites.some((favorite)=> favorite.uuid === country.uuid ) : false ;
 
     // console.log(country)
     // const latitude = country.capitals[0].coordinates.lat;
@@ -19,7 +21,6 @@ function Weather() {
     const [weather, setWeather] = useState(null)
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const [like, setLike] = useState(false)
 
     useEffect(() => {
 
@@ -41,7 +42,7 @@ function Weather() {
                 }
 
                 const data = await response.json()
-                console.log(data)
+                // console.log(data)
                 setWeather(data)
             } catch (error) {
                 setError("Something went wrong. Please try again.")
@@ -67,8 +68,13 @@ function Weather() {
     if (!weather) {
         return <h1>Loading weather...</h1>
     }
-    function handelLike() {
-        setLike(!like)
+    function handleLike() {
+        if(isFavorite){
+            const newFavorites = favorites.filter((favorite)=>(favorite.uuid !== country.uuid))
+             setFavorites(newFavorites);
+        }else{
+            setFavorites([...favorites , country])
+        }
     }
 
 
@@ -79,7 +85,7 @@ function Weather() {
             <h3> Temperature: {weather.current.temperature_2m} °C</h3>
             <h3>wind : {weather.current.wind_speed_10m} km/h</h3>
             <h3>Humidity : {weather.current.relative_humidity_2m} %</h3>
-            <button onClick={handelLike}><Heart className={like ? "text-red-500" : ""} fill={like ? "red" : "none"} /></button>
+            <button onClick={handleLike}><Heart className={isFavorite ? "text-red-500" : ""} fill={isFavorite ? "red" : "none"} /></button>
         </div>
     )
 
