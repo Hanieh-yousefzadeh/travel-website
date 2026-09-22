@@ -6,6 +6,7 @@ import Login from "./pages/login";
 import Profile from "./pages/profile";
 import MyTrip from "./pages/mytrip";
 import { CountryContext } from "./context/countrycontext";
+import Header from "./components/header";
 
 const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
 // console.log(apikey);
@@ -14,6 +15,7 @@ const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
 function App() {
 
   const [countries, setCountries] = useState([])
+  const [favorites, setFavorites] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -67,13 +69,14 @@ function App() {
   }
   return (
     <>
-      <CountryContext value={{ countries }}>
+      <Header />
+      <CountryContext value={{ countries, favorites, setFavorites }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/country/:id" element={<Weather />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/favorite" element={<MyTrip />} />
+          <Route path="/favorite/" element={<MyTrip />} />
         </Routes>
       </CountryContext>
 
