@@ -11,9 +11,9 @@ function Weather() {
     const { countries ,favorites, setFavorites } = useContext(CountryContext);
     const {user} = useContext(AuthContext)
     // console.log(id)
-    const country = countries.find((country) => country.uuid === id);
+    const country = countries.find((country) => country.numericCode === id);
     
-    const isFavorite = country ? favorites.some((favorite)=> favorite.uuid === country.uuid ) : false ;
+    const isFavorite = country ? favorites.some((favorite)=> favorite.numericCode === country.numericCode ) : false ;
 
     // console.log(country)
     // const latitude = country.capitals[0].coordinates.lat;
@@ -33,8 +33,8 @@ function Weather() {
             return;
         }
 
-        const latitude = country.capitals[0].coordinates.lat;
-        const longitude = country.capitals[0].coordinates.lng;
+        const latitude = country.latlng[0];
+        const longitude = country.latlng[1]
 
         async function getWeather() {
             setLoading(true)
@@ -80,7 +80,7 @@ function Weather() {
             return
         }
         if(isFavorite){
-            const newFavorites = favorites.filter((favorite)=>(favorite.uuid !== country.uuid))
+            const newFavorites = favorites.filter((favorite)=>(favorite.numericCode !== country.numericCode))
              setFavorites(newFavorites);
         }else{
             setFavorites([...favorites , country])
@@ -94,8 +94,8 @@ function Weather() {
 
     return (
         <div>
-            <h1>{country.names.common}</h1>
-            <h2>capital :{country.capitals[0].name}</h2>
+            <h1>{country.name}</h1>
+            <h2>{country.capital && (`capital : ${country.capital}`) }</h2>
             <h3> Temperature: {weather.current.temperature_2m} °C</h3>
             <h3>wind : {weather.current.wind_speed_10m} km/h</h3>
             <h3>Humidity : {weather.current.relative_humidity_2m} %</h3>

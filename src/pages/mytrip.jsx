@@ -9,8 +9,8 @@ function MyTrip() {
         <div>
             <ul>my favorite trip</ul>
             {favorites.map((country) => (
-                <li key={country.uuid}>
-                    <Link to={`/country/${country.uuid}`}>{country.names.common}</Link>
+                <li key={country.numericCode}>
+                    <Link to={`/country/${country.numericCode}`}>{country.name}</Link>
                 </li>
             ))}
         </div>
