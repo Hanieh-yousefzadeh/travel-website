@@ -7,12 +7,16 @@ import Profile from "./pages/profile";
 import MyTrip from "./pages/mytrip";
 import { CountryContext } from "./context/countrycontext";
 import Header from "./components/header";
+import {AuthContext } from "./context/authcontect";
 
 const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
 // console.log(apikey);
 
 function App() {
 
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem("user")) || null
+  })
   const [countries, setCountries] = useState([]);
 
   const [favorites, setFavorites] = useState(() => {
@@ -76,16 +80,18 @@ function App() {
   }
   return (
     <>
-      <Header />
-      <CountryContext value={{ countries, favorites, setFavorites }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/country/:id" element={<Weather />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/favorite/" element={<MyTrip />} />
-        </Routes>
-      </CountryContext>
+      <AuthContext value={{ user, setUser }}>
+        <Header />
+        <CountryContext value={{ countries, favorites, setFavorites }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/country/:id" element={<Weather />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/favorite/" element={<MyTrip />} />
+          </Routes>
+        </CountryContext>
+      </AuthContext>
 
     </>
   )
