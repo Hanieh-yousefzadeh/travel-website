@@ -13,16 +13,18 @@ function Header() {
         navigate("/login")
     }
     return (
-        <nav>
-            <Link to="/">tripy</Link>
-            <Link to="/favorite"> favorite</Link>
-            {!user && (<Link to="/login"> Login</Link>)}
-            {user && (
-                <div>
-                    <Link to="/profile">Profile</Link>
-                    <button onClick={handelLog}>logout</button>
-                </div>)}
-        </nav>
+        <nav className="navbar bg-base-100 shadow-sm h-15 w-full px-10 flex items-center justify-between">
+            <Link to="/" className="btn btn-ghost text-3xl">Tripy</Link>
+            <div className="flex gap-5">
+                <Link to="/favorite" className="text-base"> favorite</Link>
+                {!user && (<Link to="/login" className="text-base"> Login</Link>)}
+                {user && (
+                    <div>
+                        <Link to="/profile">Profile</Link>
+                        <button onClick={handelLog}>logout</button>
+                    </div>)}
+            </div>
+        </nav >
     )
 }
 export default Header;

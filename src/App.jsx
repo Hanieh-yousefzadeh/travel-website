@@ -34,31 +34,17 @@ function App() {
     async function getCountry() {
       setLoading(true)
       setError("")
-      try {
-        let allCountries = [];
-        let offset = 0;
-        let more = true;
-        while (more) {
-          const response = await fetch(`https://api.restcountries.com/countries/v5?limit=100&offset=${offset}`, {
-            headers: {
-              'Authorization': `Bearer ${apikey}`
-            }
-          }); 
+      try { 
+          const response = await fetch("https://countries.dev/countries?fields=name%2Ccapital%2Cflag&full=true&sort=population&limit=245&offset=0"); 
           // console.log(response)
           if (!response.ok) {
             throw new Error("Something went wrong")
           }
           const data = await response.json();
-          // console.log(data)
-          const pageCountries = data.data.objects;
+          console.log(data)
+        
 
-          allCountries = [...allCountries, ...pageCountries]
-
-          more = data.data.meta.more;
-          offset += 100
-        }
-
-        setCountries(allCountries)
+        setCountries(data)
 
       } catch (error) {
         setError("Something went wrong. Please try again.")
