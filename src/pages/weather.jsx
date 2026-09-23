@@ -3,6 +3,7 @@ import { Heart } from "lucide-react"
 import { useParams } from "react-router";
 import { CountryContext } from "../context/countrycontext";
 import { AuthContext } from "../context/authcontect";
+import { Link } from "react-router";
 
 function Weather() {
 
@@ -104,6 +105,7 @@ function Weather() {
                 <div>
                     <button onClick={handleModal}>x</button>
                     <h5>untill to login , you dont like.please firt login</h5>
+                    <Link to="/login">Login</Link>
                 </div>
             )}
         </div>

@@ -14,13 +14,14 @@ function Header() {
     }
     return (
         <nav>
-            <Link to ="/">tripy</Link>
+            <Link to="/">tripy</Link>
             <Link to="/favorite"> favorite</Link>
             {!user && (<Link to="/login"> Login</Link>)}
-            {user && (<>
-            <Link to="/profile">Account Center</Link>
-                <button onClick={handelLog}>logout</button>
-            </>)}
+            {user && (
+                <div>
+                    <Link to="/profile">Profile</Link>
+                    <button onClick={handelLog}>logout</button>
+                </div>)}
         </nav>
     )
 }
