@@ -13,6 +13,8 @@ function Login() {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    const [rememberMe, setRememberMe] = useState(false)
+
     const [error, setError] = useState("")
 
     const { setUser } = useContext(AuthContext);
@@ -67,7 +69,9 @@ function Login() {
             family: family,
             email: email
         })
-        localStorage.setItem("user", JSON.stringify({ name: name, family: family, email: email }));
+        if (rememberMe) {
+            localStorage.setItem("user", JSON.stringify({ name: name, family: family, email: email }));
+        }
 
         navigate("/")
     }
@@ -91,6 +95,10 @@ function Login() {
         setConfirmPassword(e.target.value)
     }
 
+    function handleRemember(e) {
+        setRememberMe(e.target.checked)
+    }
+
 
 
     return (
@@ -103,6 +111,10 @@ function Login() {
                 <input type="email" value={email} placeholder="email" onChange={handelEmail} />
                 <input type="password" value={password} placeholder="password" onChange={handelPassword} />
                 <input type="password" value={confirmPassword} placeholder="confirm password" onChange={handelConfirmPassword} />
+
+                <label> 
+                    <input type="checkbox" checked={rememberMe} onChange={handleRemember} /> Remember Me
+                </label>
 
                 <button type="submit">Login</button>
 
