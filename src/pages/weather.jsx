@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { Heart } from "lucide-react"
 import { useParams } from "react-router";
 import { CountryContext } from "../context/countrycontext";
+import { AuthContext } from "../context/authcontect";
 
 function Weather() {
 
     const { id } = useParams();
     const { countries ,favorites, setFavorites } = useContext(CountryContext);
+    const {user} = useContext(AuthContext)
     // console.log(id)
     const country = countries.find((country) => country.uuid === id);
     
@@ -21,6 +23,8 @@ function Weather() {
     const [weather, setWeather] = useState(null)
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const [showModal , setShowModal] = useState(false);
 
     useEffect(() => {
 
@@ -69,12 +73,21 @@ function Weather() {
         return <h1>Loading weather...</h1>
     }
     function handleLike() {
+
+        if(!user){
+            setShowModal(true)
+            return
+        }
         if(isFavorite){
             const newFavorites = favorites.filter((favorite)=>(favorite.uuid !== country.uuid))
              setFavorites(newFavorites);
         }else{
             setFavorites([...favorites , country])
         }
+    }
+
+    function handleModal(){
+        setShowModal(false)
     }
 
 
@@ -86,6 +99,13 @@ function Weather() {
             <h3>wind : {weather.current.wind_speed_10m} km/h</h3>
             <h3>Humidity : {weather.current.relative_humidity_2m} %</h3>
             <button onClick={handleLike}><Heart className={isFavorite ? "text-red-500" : ""} fill={isFavorite ? "red" : "none"} /></button>
+
+            {showModal &&(
+                <div>
+                    <button onClick={handleModal}>x</button>
+                    <h5>untill to login , you dont like.please firt login</h5>
+                </div>
+            )}
         </div>
     )
 
