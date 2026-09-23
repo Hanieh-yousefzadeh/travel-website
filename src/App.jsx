@@ -43,7 +43,8 @@ function App() {
             headers: {
               'Authorization': `Bearer ${apikey}`
             }
-          }); // console.log(respone)
+          }); 
+          // console.log(response)
           if (!response.ok) {
             throw new Error("Something went wrong")
           }
