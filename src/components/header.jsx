@@ -30,10 +30,10 @@ function Header() {
                 </button>
                 <div className="sm:flex lg:gap-10 gap-5 text-base font-medium items-center hidden">
                     <Link to="/favorite" className=" flex items-center gap-1 hover:rounded-full hover:bg-amber-50 px-2 py-2"><Heart className="lg:size-7  p-1 rounded-full border-2  hover:fill-[#26141A]" /> favorite</Link>
-                    {!user && (<Link to="/login" className="rounded-full bg-amber-50 pt-1 pb-2 px-5 hover:bg-[#26141A] hover:text-amber-50"> Login</Link>)}
+                    {!user && (<Link to="/login" className="rounded-full bg-amber-50 pt-2 pb-3 px-7 hover:bg-[#26141A] hover:text-amber-50"> Login</Link>)}
                     {user && (
                         <div className="flex lg:gap-10 gap-5">
-                            <Link to="/profile" className="flex gap-1 items-center hover:rounded-full hover:bg-amber-50 px-2 py-2"><UserRound className="lg:size-7  p-1 rounded-full border-2   hover:fill-[#26141A]" strokeWidth={2} />Profile</Link>
+                            <Link to="/profile" className="flex gap-1 items-center hover:rounded-full hover:bg-amber-50 px-2 py-2"><UserRound className="lg:size-7  p-1 rounded-full border-2   hover:fill-[#26141A]" strokeWidth={2} />My Account</Link>
                             <button onClick={handelLog} className="rounded-full bg-amber-50 sm:pt-1 sm:pb-2 sm:px-5 hover:bg-[#26141A] hover:text-amber-50">Logout</button>
                         </div>)}
                 </div>
