@@ -3,10 +3,10 @@ function Footer() {
     return (
         <div className="">
             <footer className="bg-[#EBE6D4] flex flex-col">
-                <div className="footer sm:footer-horizontal text-base-content p-10  py-15 px-10 ">
-                    <aside >
-                        <h1 className="flex text-3xl font-bold items-baseline pb-1 text-[#26141A]"><MapPinned className="size-5" />Tripy</h1>
-                        <p className="font-semibold text-[#5E5C55] pb-7">Choose Dream Destinations</p>
+                <div className="footer flex flex-wrap xl:gap-60 sm:gap-15 lg:gap-35 text-base-content sm:p-10 pt-5  sm:py-15 py-7 sm:px-10 px-5">
+                    <aside className="sm:pr-0 pr-20">
+                        <h1 className="flex sm:text-3xl text-xl font-bold items-baseline pb-1 text-[#26141A]"><MapPinned className="sm:size-5 size-4" />Tripy</h1>
+                        <p className="font-semibold text-[#5E5C55] pb-7 sm:text-base text-sm">Choose Dream Destinations</p>
                         <nav className="flex gap-4 md:place-self-strat md:justify-self-start">
                             <a>
                                 <svg
@@ -46,29 +46,29 @@ function Footer() {
                             </a>
                         </nav>
                     </aside>
-                    <nav>
-                        <h6 className="footer-title">Services</h6>
-                        <a className="link link-hover text-[#26141A]">Branding</a>
-                        <a className="link link-hover text-[#26141A]">Design</a>
-                        <a className="link link-hover text-[#26141A]">Marketing</a>
-                        <a className="link link-hover text-[#26141A]">Advertisement</a>
+                    <nav className="xl:pr-20 pr-4">
+                        <h6 className="footer-title ">Services</h6>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Branding</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Design</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Marketing</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Advertisement</a>
                     </nav>
-                    <nav>
+                    <nav className="xl:pr-20 pr-4">
                         <h6 className="footer-title">Company</h6>
-                        <a className="link link-hover text-[#26141A]">About us</a>
-                        <a className="link link-hover text-[#26141A]">Contact</a>
-                        <a className="link link-hover text-[#26141A]">Jobs</a>
-                        <a className="link link-hover text-[#26141A]">Press kit</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">About us</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Contact</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Jobs</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Press kit</a>
                     </nav>
                     <nav>
                         <h6 className="footer-title">Legal</h6>
-                        <a className="link link-hover text-[#26141A]">Terms of use</a>
-                        <a className="link link-hover text-[#26141A]">Privacy policy</a>
-                        <a className="link link-hover text-[#26141A]">Cookie policy</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Terms of use</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Privacy policy</a>
+                        <a className="link link-hover text-[#26141A] sm:text-base text-xs">Cookie policy</a>
                     </nav>
                 </div>
-                <div className="border-t border-t-[#26141a2e] h-10 px-10 flex items-center">
-                    <p className="text-sm text-[#26141a9b]">Copyright © {new Date().getFullYear()} - All right reserved</p>
+                <div className="border-t border-t-[#26141a2e] md:h-10 md:px-10 h-8 px-5 flex items-center">
+                    <p className="md:text-sm text-xs text-[#26141a9b]">Copyright © {new Date().getFullYear()} - All right reserved</p>
                 </div>
             </footer>
 
