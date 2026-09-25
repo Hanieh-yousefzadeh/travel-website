@@ -79,7 +79,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <div className="flex flex-col gap-4 px-40 bg-[#F1EEE2] pb-15">
+            <div className="flex flex-col gap-4 px-35 bg-[#F1EEE2] pb-15">
                 <h3 className="text-3xl font-sans font-bold text-[#26141A] text-center pb-20 pt-18 ">Frequently Asked Questions</h3>
                 <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                     <input type="radio" name="my-accordion-2" defaultChecked />
