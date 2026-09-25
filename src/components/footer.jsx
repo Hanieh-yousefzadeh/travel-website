@@ -5,7 +5,7 @@ function Footer() {
             <footer className="bg-[#EBE6D4] flex flex-col">
                 <div className="footer flex flex-wrap xl:gap-60 sm:gap-15 lg:gap-35 text-base-content sm:p-10 pt-5  sm:py-15 py-7 sm:px-10 px-5">
                     <aside className="sm:pr-0 pr-20">
-                        <h1 className="flex sm:text-3xl text-xl font-bold items-baseline pb-1 text-[#26141A]"><MapPinned className="sm:size-5 size-4 text-[#5A392D]" />Tripy</h1>
+                        <h1 className="flex sm:text-3xl text-xl font-bold items-baseline pb-1 text-[##072629]"><MapPinned className="sm:size-5 size-4 text-[#072629ad]" />Tripy</h1>
                         <p className="font-semibold text-[#5E5C55] pb-7 sm:text-base text-sm">Choose Dream Destinations</p>
                         <nav className="flex gap-4 md:place-self-strat md:justify-self-start">
                             <a>
