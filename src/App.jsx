@@ -7,6 +7,7 @@ import Profile from "./pages/profile";
 import MyTrip from "./pages/mytrip";
 import { CountryContext } from "./context/countrycontext";
 import Header from "./components/header";
+import Footer from "./components/footer";
 import {AuthContext } from "./context/authcontect";
 
 const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
@@ -79,7 +80,7 @@ function App() {
           </Routes>
         </CountryContext>
       </AuthContext>
-
+        <Footer/>
     </>
   )
 }
