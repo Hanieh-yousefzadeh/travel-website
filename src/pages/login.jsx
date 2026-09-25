@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../context/authcontect";
+import { TriangleAlert } from "lucide-react"
 
 
 function Login() {
@@ -102,24 +103,45 @@ function Login() {
 
 
     return (
-        <div>
-            <h1>login page</h1>
-            <form onSubmit={handelSubmit}>
-                <p>{error}</p>
-                <input type="text" value={name} placeholder="name" onChange={handelName} />
-                <input type="text" value={family} placeholder="family" onChange={handelFamily} />
-                <input type="email" value={email} placeholder="email" onChange={handelEmail} />
-                <input type="password" value={password} placeholder="password" onChange={handelPassword} />
-                <input type="password" value={confirmPassword} placeholder="confirm password" onChange={handelConfirmPassword} />
+        <section className="flex xl:px-50 sm:px-10 px-5  sm:py-10 py-5 ">
+            <div className="sm:bg-[url(/assets/images/1525279728795.webp)] sm:h-138 h-70 bg-cover bg-center w-[50%] sm:rounded-tl-4xl sm:rounded-bl-4xl rounded-tl-2xl rounded-bl-2xl bg-none"></div>
+            <div className="flex flex-col sm:w-[50%] w-full bg-[#EBE6D4] sm:rounded-tr-4xl sm:rounded-br-4xl sm:rounded-tl-none sm:rounded-bl-none rounded-2xl px-5">
+                <h1 className="sm:text-4xl font-bold text-[#00251C] text-center pt-6 sm:pb-10 pb-5 ">Welcome</h1>
+                <form onSubmit={handelSubmit} className="flex flex-col flex-1 pb-5">
+                    {error && (<p className="flex gap-2 items-center self-center text-red-700"><TriangleAlert className="size-5 text-red-700" />{error}</p>)}
 
-                <label> 
-                    <input type="checkbox" checked={rememberMe} onChange={handleRemember} /> Remember Me
-                </label>
+                    <label className="flex flex-col self-center gap-2 sm:pb-8 pb-6">
+                        <input type="text" value={name} placeholder="Name" onChange={handelName} className="border-b-2 border-[#26141a44] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
+                    </label>
 
-                <button type="submit">Login</button>
 
-            </form>
-        </div>
+                    <label className="flex flex-col self-center gap-2 sm:pb-8 pb-6">
+                        <input type="text" value={family} placeholder="Family" onChange={handelFamily} className="border-b-2 border-[#26141a44] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
+                    </label>
+
+
+                    <label className="flex flex-col self-center gap-2 sm:pb-8 pb-6">
+                        <input type="email" value={email} placeholder="E-mail" onChange={handelEmail} className="border-b-2 border-[#26141a44] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
+                    </label>
+
+                    <label className="flex flex-col self-center gap-2 sm:pb-8 pb-6">
+                        <input type="password" value={password} placeholder="Password" onChange={handelPassword} className="border-b-2 border-[#26141a44] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
+                    </label>
+
+                    <label className="flex flex-col self-center gap-2 sm:pb-4 pb-3 ">
+                        <input type="password" value={confirmPassword} placeholder="Confirm Password" onChange={handelConfirmPassword} className="border-b-2 border-[#26141a44] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
+                    </label>
+
+                    <label className="xl:pl-20 pl-1 lg:pl-8 font-medium flex gap-1 pb-1.5 text-[#00251C] text-xs">
+                        <input type="checkbox" checked={rememberMe} onChange={handleRemember} /> Remember Me
+                    </label>
+
+                    <button type="submit" className="text-[#26141A] sm:text-xl self-center font-bold rounded-full bg-amber-50 pt-2 pb-3 lg:px-40 sm:px-30 px-25 hover:bg-[#00251C] hover:text-amber-50 sm:mt-10 mt-7">Login</button>
+
+                </form>
+            </div>
+
+        </section>
     )
 }
 export default Login;
