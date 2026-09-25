@@ -60,11 +60,11 @@ function App() {
   }, []);
 
   if (loading) {
-    return (<h1>loading ...</h1>)
+    return <h1 className="h-160 flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></h1>
   }
 
   if (error) {
-    return (<h1>{error}</h1>)
+    return <h1 className="text-3xl font-medium text-center pt-20 text-[#26141A]">{error}</h1>
   }
   return (
     <>
