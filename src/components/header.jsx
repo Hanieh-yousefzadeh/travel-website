@@ -21,7 +21,7 @@ function Header() {
     return (
         <nav className="relative">
             <div className=" bg-[#EBE6D4]  sm:h-17 h-11 w-full sm:px-10 px-5 flex items-center justify-between text-[#26141A]">
-                <Link to="/" className=" xl:text-3xl text-xl font-semibold flex items-baseline"><MapPinned className="size-5"/>Tripy</Link>
+                <Link to="/" className=" xl:text-3xl text-xl font-bold flex items-baseline"><MapPinned className="size-5"/>Tripy</Link>
                 <button onClick={handelClick} className="sm:hidden ">
                     {isOpen ? (<X className="p-0.5 w-7 h-6 sm:w-9 sm:h-8 rounded-sm text-[#26141A]" />)
                         :
