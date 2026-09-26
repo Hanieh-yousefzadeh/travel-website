@@ -10,9 +10,6 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import {AuthContext } from "./context/authcontect";
 
-const apikey = import.meta.env.VITE_COUNTRIES_API_KEY;
-// console.log(apikey);
-
 function App() {
 
   const [user, setUser] = useState(() => {
@@ -69,8 +66,8 @@ function App() {
   return (
     <>
       <AuthContext value={{ user, setUser }}>
-        <Header />
         <CountryContext value={{ countries, favorites, setFavorites }}>
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

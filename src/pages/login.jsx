@@ -132,11 +132,11 @@ function Login() {
                         <input type="password" value={confirmPassword} placeholder="Confirm Password" onChange={handelConfirmPassword} className="border-b-2 border-[#0726293f] pb-1 lg:w-90 sm:w-72 w-60 outline-none placeholder:text-[#00251C] placeholder:font-medium sm:placeholder:text-base placeholder:text-sm" />
                     </label>
 
-                    <label className="xl:pl-20 pl-1 lg:pl-8 font-medium flex gap-1 pb-1.5 text-[#00251C] text-xs">
-                        <input type="checkbox" checked={rememberMe} onChange={handleRemember} /> Remember Me
+                    <label className="xl:pl-20 pl-1 lg:pl-8 font-medium flex gap-1.5 pb-1.5 text-[#00251C] text-xs">
+                        <input type="checkbox" checked={rememberMe}  onChange={handleRemember} className="checkbox checked:text-[#00251C] bg-[#EBE6D4] rounded-sm h-4.5 w-4.5 border-[#0726293f] border" /> Remember Me
                     </label>
 
-                    <button type="submit" className="text-[#26141A] sm:text-xl self-center font-bold rounded-full bg-amber-50 pt-2 pb-3 lg:px-40 sm:px-30 px-25 hover:bg-[#00251C] hover:text-amber-50 sm:mt-10 mt-7">Login</button>
+                    <button type="submit" className="text-[#26141A] sm:text-xl self-center font-bold rounded-full bg-amber-50 pt-2 pb-3 lg:px-40 sm:px-30 px-25 hover:bg-[#072629ad] hover:text-amber-50 sm:mt-10 mt-7">Login</button>
 
                 </form>
             </div>
