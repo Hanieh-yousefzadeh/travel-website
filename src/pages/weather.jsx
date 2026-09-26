@@ -3,7 +3,6 @@ import { Heart, Thermometer, Wind, Droplet } from "lucide-react"
 import { useParams } from "react-router";
 import { CountryContext } from "../context/countrycontext";
 import { AuthContext } from "../context/authcontect";
-import { Link } from "react-router";
 
 function Weather() {
 
@@ -29,10 +28,10 @@ function Weather() {
 
     useEffect(() => {
 
-        if (!country) {
+        if (!country || !country.latlng) {
+             setError("Weather information is not available for this country");
             return;
         }
-
         const latitude = country.latlng[0];
         const longitude = country.latlng[1]
 
@@ -58,20 +57,20 @@ function Weather() {
         }; getWeather()
     }, [country])
 
-    if (!country) {
-        return <h1 className="h-160 flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></h1>
+    if (!country ) {
+        return <h1 className="h-160 flex justify-center items-center text-xl gap-3"><span className="loading loading-spinner loading-xl"></span></h1>
     }
 
     if (loading) {
-        return <h1 className="h-160 flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></h1>
+        return <h1 className="h-160 flex justify-center items-center text-xl gap-3"><span className="loading loading-spinner loading-xl"></span></h1>
     }
 
     if (error) {
-        return <h1>{error}</h1>
+        return <h1 className="h-160 flex justify-center items-center text-xl gap-3"><span className="loading loading-spinner loading-xl"></span>{error}</h1>
     }
 
     if (!weather) {
-        return <h1 className="h-160 flex justify-center items-center"><span className="loading loading-spinner loading-xl"></span></h1>
+        return <h1 className="h-160 flex justify-center items-center text-xl gap-3"><span className="loading loading-spinner loading-xl"></span></h1>
     }
     function handleLike() {
 
@@ -94,24 +93,24 @@ function Weather() {
 
     return (
         <section className=" sm:flex-row flex flex-col lg:gap-15 sm:gap-5 px-5 sm:px-0 bg-[#FEFBEE]">
-            <div className="bg-[url(/assets/images/explore-diverse-forests-towering-mountain-ranges-creative-world-map-depicting-unique-landscapes-geography-generative-376782108.webp)] bg-cover lg:h-160 bg-center sm:w-[50%]"></div>
-            <div className="flex flex-col sm:pt-20 pt-10 gap-7 relative">
-                <h1 className="lg:text-2xl text-lg font-sans font-bold text-[#072629] ">{country.name}</h1>
+            <div className="bg-[url(/assets/images/explore-diverse-forests-towering-mountain-ranges-creative-world-map-depicting-unique-landscapes-geography-generative-376782108.webp)] bg-cover lg:h-160 bg-center sm:w-[50%] lg:mr-10"></div>
+            <div className="flex flex-col sm:pt-25 pt-10 gap-7 relative">
+                <h1 className="lg:text-3xl text-lg font-sans font-bold text-[#072629] line-clamp-2">{country.name}</h1>
                 <div className="flex justify-between">
                     {country.capital ? (
                         <div>
-                            <h2 className="lg:text-lg text-xs font-medium lg:pt-15 pt-5 pb-3.5 pl-1 text-[#26141A] ">Capital </h2>
+                            <h2 className="lg:text-lg text-xs font-medium lg:pt-7 pt-5 pb-3.5 pl-1 text-[#26141A] ">Capital </h2>
                             <span className="pl-3 pr-10 pb-3.5 pt-2.5 rounded-4xl bg-[#95a86b5c] text-[#072629] lg:text-base text-xs">{country.capital}</span>
                         </div>
                     ) : (
-                    <div>
-                        <h2 className="lg:text-lg text-sm font-medium lg:pt-15 pt-7 pb-3.5 pl-1 text-[#26141A]">Name </h2>
-                        <span className="pl-3 pr-10 pb-3.5 pt-2.5 rounded-4xl bg-[#95a86b5c] text-[#072629] lg:text-base text-xs">{country.name}</span>
-                    </div>)}
-                    <button onClick={handleLike} className="lg:mt-22 sm:mt-12  mt-10 text-[#072629] bg-[#95a86b5c] rounded-full h-10 w-10 sm:mr-10 flex items-center justify-center lg:text-base text-xs"><Heart className={isFavorite ? "text-[#FF0000]" : ""} fill={isFavorite ? "red" : "none"} /></button>
+                        <div>
+                            <h2 className="lg:text-lg text-sm font-medium lg:pt-15 pt-7 pb-3.5 pl-1 text-[#26141A]">Name </h2>
+                            <span className="pl-3 pr-10 pb-3.5 pt-2.5 rounded-4xl bg-[#95a86b5c] text-[#072629] lg:text-base text-xs">{country.name}</span>
+                        </div>)}
+                    <button onClick={handleLike} className="lg:mt-16 sm:mt-12  mt-10 text-[#072629] bg-[#95a86b5c] rounded-full h-10 w-10 sm:mr-0 flex items-center justify-center lg:text-base text-xs"><Heart className={isFavorite ? "text-red-900" : ""} fill={isFavorite ? "currentColor" : "none"} /></button>
                 </div>
 
-                <div className="flex xl:gap-25 sm:gap-8 gap-4 pt-5 lg:pt-10 pb-0 sm:pb-10">
+                <div className="flex xl:gap-15 sm:gap-8 gap-4 pt-5 lg:pt-10 pb-0 sm:pb-10">
                     <div>
                         <h3 className="lg:text-lg text-xs font-medium pb-2 pl-1 text-[#26141A]"> Temperature</h3>
                         <span className="flex items-center lg:pl-3 pl-2 lg:pr-14 sm:pb-3 sm:pt-2 pb-2.5 pt-1.5 rounded-4xl bg-[#95a86b5c] text-[#072629] lg:text-base text-xs"><Thermometer className="sm:size-5.5 size-4" />{weather.current.temperature_2m} °C</span>
@@ -133,7 +132,7 @@ function Weather() {
                     </div>
                 )}
             </div>
-             <div className="bg-[url(/assets/images/explore-diverse-forests-towering-mountain-ranges-creative-world-map-depicting-unique-landscapes-geography-generative-376782108.webp)] bg-cover bg-center sm:w-[50%] h-50 w-full sm:hidden mb-10"></div>
+            <div className="bg-[url(/assets/images/explore-diverse-forests-towering-mountain-ranges-creative-world-map-depicting-unique-landscapes-geography-generative-376782108.webp)] bg-cover bg-center sm:w-[50%] h-50 w-full sm:hidden mb-10"></div>
         </section>
     )
 

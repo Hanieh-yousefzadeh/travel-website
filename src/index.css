@@ -2,3 +2,7 @@
 @plugin "daisyui"{
      themes: light;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}

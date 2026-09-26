@@ -40,7 +40,7 @@ function Home() {
                             {result.length > 0 ? (result.map((country) => (
                                 <Link key={country.numericCode} to={`/country/${country.numericCode}`} className="flex items-center gap-2  hover:border hover:border-[#e2e0d7] py-3 pl-3 rounded-3xl pb-4 hover:bg-[#F1EEE2] ">
                                     {country.flags.png !== "" && (<img src={country.flags.png} className="w-8 h-5 rounded-sm" />)}
-                                    <h1 className="text-base w-45 font-semibold ">{country.name}</h1>
+                                    <h1 className="text-base w-45 font-semibold line-clamp-1 ">{country.name}</h1>
                                 </Link>
                             )
                             )
@@ -66,11 +66,11 @@ function Home() {
 
                 <div className="flex flex-col">
                     <h2 className="sm:text-3xl font-sans font-bold text-[#072629] text-center sm:mb-15 mb-7 sm:mt-25 mt-12 self-center sm:w-80 w-40 border-b border-b-[#26141a8d] pb-5 ">Destinations</h2>
-                    <div className="grid xl:grid-cols-6 md:grid-cols-3 grid-cols-2 md:gap-y-7 md:gap-x-8 pb-5 xl:max-h-100 md:max-h-50 max-h-40 overflow-x-auto scroll-smooth scrollbar-thumb-[#26141ac4] scrollbar-track-[#FFFBEB] sm:mb-10 mb-5 ">
+                    <div className="grid xl:grid-cols-6 md:grid-cols-3 grid-cols-2 md:gap-y-7 md:gap-x-8 pb-5 xl:max-h-90 md:max-h-50 max-h-40 overflow-x-auto scroll-smooth scrollbar-thumb-[#26141ac4] scrollbar-track-[#FFFBEB] sm:mb-10 mb-5 ">
                         {countries.map((country) => (
                             <Link key={country.numericCode} to={`/country/${country.numericCode}`} className="flex items-center gap-2 hover:border hover:border-[#e2e0d7] py-3 pl-3 pr-2 rounded-3xl  hover:bg-[#F1EEE2] ">
                                 {country.flags.png !== "" && (<img src={country.flags.png} className="sm:w-17 w-7 h-4 sm:h-11 rounded-sm " />)}
-                                <h1 className="sm:text-sm text-xs sm:w-50  w-25 text-[#140c0ffa] font-medium ">{country.name}</h1>
+                                <h1 className="sm:text-sm text-xs sm:w-50  w-25 text-[#140c0ffa] font-medium line-clamp-1">{country.name}</h1>
                             </Link>
                         )
                         )}
